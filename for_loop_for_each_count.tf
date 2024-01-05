@@ -20,3 +20,16 @@ variable "bucket_name" {
 type = set(string)
 default = ["mybucketterra1", "mybucketterra2", "mybucketterra3"]
 }
+
+// count support list and set 
+// for loop support set and map
+// for loop doesn't support list and to convert list into map use "toset"
+
+resource "aws_s3_bucket" "default" {
+for_each = toset(var.bucket_name)
+bucket = each.value
+}
+variable "bucket_name" {
+type = list(string)
+default = ["mybucketterra1", "mybucketterra2", "mybucketterra3"]
+}
