@@ -18,5 +18,5 @@ bucket = each.value
 }
 variable "bucket_name" {
 type = set(string)
-default = ["mybucketterra1", "mybucketterra2", "mybucketterra2"]
+default = ["mybucketterra1", "mybucketterra2", "mybucketterra3"]
 }
