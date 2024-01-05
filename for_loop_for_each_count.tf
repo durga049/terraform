@@ -22,8 +22,8 @@ default = ["mybucketterra1", "mybucketterra2", "mybucketterra3"]
 }
 
 // count support list and set 
-// for loop support set and map
-// for loop doesn't support list and to convert list into map use "toset"
+// for each support set and map
+// for each doesn't support list and to convert list into map use "toset"
 
 resource "aws_s3_bucket" "default" {
 for_each = toset(var.bucket_name)
