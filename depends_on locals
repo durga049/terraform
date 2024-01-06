@@ -1,0 +1,14 @@
+locals {
+name = "terraform"
+}
+resource "aws_s3_bucket" "default" {
+bucket = "mybucketterra1"
+}
+resource "aws_instance" "default" {
+ami = "ami-0c7217cdde317cfec"
+instance_type = "t2.micro"
+tags =  {
+Name = "${local.name}-create"
+}
+depends_on = [aws_s3_bucket.default]
+}
