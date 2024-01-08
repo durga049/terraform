@@ -1,0 +1,20 @@
+locals{
+name="security_group"
+}
+resource "aws_security_group" "default"{
+name = "${local.name}"
+dynamic "ingress" {
+for_each = [22, 8080, 9090]
+iterator = port
+content {
+description = "${local.name}"
+from_port = port.value
+to_port = port.value
+protocol = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
+}
+}
+tags =  {
+Name = "${local.name}"
+}
+}
