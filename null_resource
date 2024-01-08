@@ -1,0 +1,8 @@
+resource "null_resource" "default" {
+triggers = {
+id = timestamp()
+}
+  provisioner "local-exec" {
+    command = "echo hello > /tmp/durga.sh"
+  }
+}
