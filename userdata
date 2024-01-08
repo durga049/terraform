@@ -1,0 +1,15 @@
+resource "aws_instance" "default" {
+ami = "ami-0c7217cdde317cfec"
+key_name = "dev"
+instance_type = "t2.micro"
+subnet_id = "subnet-01e006c04758007d5"
+security_groups = ["sg-0c2fdaf96fdfeebeb"]
+user_data = <<-EOF
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get install nginx -y
+sudo service nginx start
+sudo service nginx enable
+sudo echo "hai" > /var/www/html/index.html
+EOF
+}
